@@ -1,0 +1,152 @@
+<!-- {{(appState$ | async).response.content | json }} -->
+
+
+<nav>
+  <a (click)="showOperations = true">Transaction effectués</a>
+  <a (click)="showOperations = false">Virements recus</a>
+  <div [ngClass]="showOperations ? 'indicator' : 'nonindicator'"></div>
+</nav>
+
+<!-- {{(MyOperation$ | async).response.content | json }} --> -->
+
+
+<div *ngIf="!showOperations" class="table-responsive custom-table-responsive tw container" style="
+top: 29%;
+    position: initial;
+    left: 6%;
+    height: 93%;
+    margin-top: 10%;
+">
+  <ng-container *ngIf="( appState$ | async ) as appState">
+    <ng-container>
+      <table class="table custom-table">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Avant Commision</th>
+            <th scope="col">Commision</th>
+            <th scope="col">Montant Net</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let transfer of appState.response.content; let i = index">
+            <tr scope="row">
+
+              <td class="td-id">
+                {{transfer.date}}
+              </td>
+              <td class="td-nom"><span>{{transfer.sendingClient.firstName}}</span></td>
+              <td class="td-prenom">{{transfer.sendingClient.lastName}}</td>
+              <td class="td-email">{{transfer.sendingClient.email}}</td>
+              <td class="td-password">{{transfer.montant}} Dh</td>
+              <td class="td-balance">0,00 Dh</td>
+              <td class="td-stripeID">{{transfer.montant}} Dh</td>
+            </tr>
+
+            <tr class="spacer">
+              <td colspan="100"></td>
+            </tr>
+          </ng-container>
+
+
+        </tbody>
+      </table>
+
+    </ng-container>
+    <div class="pagination">
+      <a (click)="PreviousPage()">&laquo;</a>
+      <a (click)="page(0)" [ngClass]="pageNumber == 0 ?'active':'content'">1</a>
+      <a (click)="page(1)" [ngClass]="pageNumber == 1 ?'active':'content'">2</a>
+      <a (click)="page(2)" [ngClass]="pageNumber == 2 ?'active':'content'">3</a>
+      <a (click)="NextPage()">&raquo;</a>
+      <!-- <button (click)="NextPage()">&raquo;</button> -->
+    </div>
+  </ng-container>
+
+</div>
+
+
+
+<div class="table-responsive custom-table-responsive tw container" style="
+ top: 29%;
+    position: initial;
+    left: 6%;
+    height: 93%;
+    margin-top: 10%;
+" *ngIf="showOperations">
+  <ng-container *ngIf="( MyOperation$ | async ) as appState">
+    <ng-container>
+      <table class="table custom-table">
+        <thead>
+          <tr>
+
+            <th scope="col">Date</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Avant Commision</th>
+            <th scope="col">Commision</th>
+            <th scope="col">Montant Net</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let transfer of appState.response.content; let i = index">
+            <tr scope="row">
+
+              <td class="td-id">
+                {{transfer.date}}
+              </td>
+              <td class="td-nom"><span>{{transfer.recivingClient.firstName}}</span></td>
+              <td class="td-prenom">{{transfer.recivingClient.lastName}}</td>
+              <td class="td-email">{{transfer.recivingClient.email}}</td>
+              <td class="td-password">{{transfer.montant}} Dh</td>
+              <td class="td-balance">0,00 Dh</td>
+              <td class="td-stripeID">{{transfer.montant}} Dh</td>
+            </tr>
+
+            <tr class="spacer">
+              <td colspan="100"></td>
+            </tr>
+          </ng-container>
+
+
+        </tbody>
+      </table>
+
+    </ng-container>
+    <div class="pagination">
+      <a (click)="PreviousSenderPage()">&laquo;</a>
+      <a (click)="Senderpage(0)" [ngClass]="pageNumber == 0 ?'active':'content'">1</a>
+      <a (click)="Senderpage(1)" [ngClass]="pageNumber == 1 ?'active':'content'">2</a>
+      <a (click)="Senderpage(2)" [ngClass]="pageNumber == 2 ?'active':'content'">3</a>
+      <a (click)="NextSenderPage()">&raquo;</a>
+      <!-- <button (click)="NextPage()">&raquo;</button> -->
+    </div>
+  </ng-container>
+
+</div>
+
+
+
+
+
+
+
+<!-- <ng-container *ngSwitchCase="DataState.LOADING_STATE">
+        <div class="loader"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="DataState.ERROR_STATE">
+        <div class="alert alert-danger" role="alert">
+          une erreur s'est produite lors de la récupération des clients 
+        </div>
+      </ng-container> -->
+
+
+<app-footer></app-footer>

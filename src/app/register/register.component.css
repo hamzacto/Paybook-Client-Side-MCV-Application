@@ -1,0 +1,227 @@
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+.card-container.card {
+  max-width: 400px !important;
+  padding: 40px 40px;
+  width: 400px !important;
+
+}
+
+.card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+
+#register{
+  top: 10%;
+  left: -2.83%;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #292929;
+  overflow: hidden;
+}
+  
+nav {
+    position: absolute;
+    top: 17%;
+    right: 0;
+    left: 0;
+    /* width: 319px; */
+    display: table;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    font-size: 16px;
+    left:13%;
+    cursor: pointer;
+  }
+  
+  nav a {
+    position: relative;
+    width: 33.333%;
+    display: table-cell;
+    text-align: center;
+    color: #949494;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: 0.2s ease color;
+  }
+  
+  nav a:before,
+  nav a:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 0.2s ease transform;
+  }
+  
+  nav a:before {
+    top: 0;
+    left: 10px;
+    width: 6px;
+    height: 6px;
+  }
+  
+  nav a:after {
+    top: 5px;
+    left: 18px;
+    width: 4px;
+    height: 4px;
+  }
+  
+  nav a:nth-child(1):before {
+    background-color: yellow;
+  }
+  
+  nav a:nth-child(1):after {
+    background-color: red;
+  }
+  
+  nav a:nth-child(2):before {
+    background-color: #00e2ff;
+  }
+  
+  nav a:nth-child(2):after {
+    background-color: #89ff00;
+  }
+  
+  nav a:nth-child(3):before {
+    background-color: purple;
+  }
+  
+  nav a:nth-child(3):after {
+    background-color: palevioletred;
+  }
+  
+  .indicator {
+    position: absolute;
+    left: 6%;
+    bottom: 0;
+    width: 171px;
+    height: 3px;
+    background-color: rgb(24, 69, 218);
+    border-radius: 5px;
+    transition: 0.2s ease left;
+  }
+  .nonindicator {
+    position: absolute;
+    left: 39%;
+    bottom: 0;
+    width: 171px;
+    height: 3px;
+    background-color: rgb(24, 69, 218);
+    border-radius: 5px;
+    transition: 0.2s ease left;
+  }
+  nav a:hover {
+    color: rgb(24, 69, 218);
+  }
+  
+  nav a:hover:before,
+  nav a:hover:after {
+    transform: scale(1);
+  }
+  
+  nav a:nth-child(1):hover ~ .indicator {
+    background: linear-gradient(130deg, yellow, red);
+    left: 0%;
+  }
+  
+  
+  nav a:nth-child(2):hover ~ .indicator {
+    left: 35%;
+    width: 171px;
+    background: linear-gradient(130deg, #00e2ff, #89ff00);
+  }
+  
+  nav a:nth-child(3):hover ~ .indicator {
+    left: 90%;
+    background: linear-gradient(130deg, purple, palevioletred);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  #loader{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 10px solid #dcefff;
+    border-top: 10px solid blue;
+    animation: rotate 2s infinite ease;
+    position: absolute;
+    top: 14%;
+    left: 44.5%;
+  }
+
+  @keyframes rotate{
+    0% {
+      transform: none;
+    }
+   100%{
+     transform: rotate(1turn);
+     
+  }
+}

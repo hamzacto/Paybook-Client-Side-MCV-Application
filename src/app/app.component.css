@@ -1,0 +1,155 @@
+
+body{
+    border: 0em;
+     max-height: 100vh; 
+}
+
+
+header{
+    padding: 0;
+    top: 0;
+    background-color: #3a4468 !important;
+    position: fixed !important;
+    height: 9%;
+    padding-top: 1%;
+    margin-top: -36px;
+    padding-bottom: 5% !important;
+}
+#separator{
+    height: 8% !important;
+}
+
+
+li{
+    margin: 1%;
+
+}
+
+.dropLi{
+    font-size: medium;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* footer section*/
+  .footer_section {
+    position: relative;
+    background-color: #3a4468;
+    text-align: center;
+    /* bottom: -20%; */
+  }
+  
+  .footer_section p {
+    border-top: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 20px 0;
+    margin: 0;
+  }
+  
+  .footer_section p a {
+    color: inherit;
+  }
+  /*# sourceMappingURL=style.css.map */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

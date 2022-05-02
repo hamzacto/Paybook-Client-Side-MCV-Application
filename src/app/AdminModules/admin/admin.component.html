@@ -1,0 +1,10 @@
+<nav>
+    <a (click)="showOperations = 0">Géstion clientèle</a>
+    <a (click)="showOperations = 1">Géstion d'opérations</a>
+    <div [ngClass]="showOperations == 0  ? 'indicator' : 'nonindicator'" ></div>
+  </nav>
+
+
+<app-clients *ngIf="showOperations==0"></app-clients>
+
+<app-operations-for-admin *ngIf="showOperations==1"></app-operations-for-admin>

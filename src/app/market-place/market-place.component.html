@@ -1,0 +1,273 @@
+<!-- <p>market-place works!</p> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+
+<div class="CartButton" *ngIf="!showCart">
+    <a class="btn btn-info btn-lg" (click)="showCart=!showCart" style="color: white;">
+        <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart {{CartNumberItems}}
+    </a>
+</div>
+<section class="product_section layout_padding" *ngIf="!showCart">
+    <ng-container *ngIf="( products$ | async ) as appState">
+
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    Les produits de nos partenaires
+
+                </h2>
+            </div>
+            <div class="row">
+                <ng-container *ngFor="let product of appState.response; let i = index">
+
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="box">
+                            <div class="img-box">
+                                <img [src]="decodeImage(product.image)">
+                                <a class="add_cart_btn" (click)="addToCart(product)" style="cursor: pointer;">
+                                    <span>
+                                        Add To Cart
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    {{product.name}}
+                                </h5>
+                                <div class="product_info">
+                                    <h5>
+                                        <span>Dh</span> {{product.price}}
+                                    </h5>
+
+                                    <div class="star_container">
+                                        <i class="bi bi-star" aria-hidden="true"></i>
+                                        <i class="bi bi-star" aria-hidden="true"></i>
+                                        <i class="bi bi-star" aria-hidden="true"></i>
+                                        <i class="bi bi-star" aria-hidden="true"></i>
+                                        <i class="bi bi-star" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="product_info">
+                                    <span>Marque : {{product.brand}}</span>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-container>
+
+            </div>
+
+        </div>
+        <div class="btn_box">
+            <a href="" class="view_more-link">
+                View More
+            </a>
+        </div>
+    </ng-container>
+
+</section>
+<!-- {{(products$ | async).brand | json }}  -->
+<!-- end product section -->
+
+
+<!-- info section -->
+
+
+<!-- end info_section -->
+
+<!-- footer section -->
+
+
+<!-- footer section -->
+
+<!-- jQery -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.js"></script>
+<!-- custom js -->
+<script src="js/custom.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="
+position: initial;
+margin-top: 6%;
+" *ngIf="showCart">
+    <button type="button" class="btn btn-link fa-lg" (click)="popCart()" style="font-size: 34px;
+position: absolute;
+left: 93%; cursor: pointer;   top: 14%; 
+"><span class="bi bi-x" style="cursor: pointer;"></span>
+    </button>
+    <div class="contentbar">
+        <!-- Start row -->
+        <div class="row">
+            <!-- Start col -->
+            <div class="col-md-12 col-lg-12 col-xl-12">
+                <div>
+                    <!-- <div class="card-header">
+                        <h5 class="card-title">Cart</h5>
+                    </div> -->
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10 col-xl-8">
+                                <div class="cart-container" style="
+                                font-size: large;
+                            ">
+                                    <div class="cart-head">
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Action</th>
+                                                        <th scope="col">Photo</th>
+                                                        <th scope="col">Product</th>
+                                                        <th scope="col">Qty</th>
+                                                        <th scope="col">Price</th>
+                                                        <th scope="col" class="text-right">Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                    <ng-container *ngFor="let item of this.cartService.getItems() let i = index">
+
+                                                        <tr>
+                                                            <th scope="row">{{i+1}}</th>
+                                                            <td><a class="text-danger"><i
+                                                                        class="ri-delete-bin-3-line" 
+                                                                        (click)="deleteFromCart(item)"></i></a></td>
+                                                            <td><img [src]="decodeImage(item.product.image)"
+                                                                    class="img-fluid" width="35" alt="product"></td>
+                                                            <td>{{item.product.name}}</td>
+                                                            <td>
+                                                                <div class="form-group mb-0">
+                                                                    <input type="number" class="form-control cart-qty"
+                                                                        name="cartQty1" id="cartQty1" value="{{item.quantity}}">
+                                                                </div>
+                                                            </td>
+                                                            <td>{{item.product.price}}.00 Dh</td>
+                                                            <td class="text-right">{{item.product.price * item.quantity}}.00 Dh</td>
+                                                        </tr>
+
+                                                    </ng-container>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="cart-body">
+                                        <div class="row" style="
+                                        margin-left: 28%;
+                                    ">
+                                            <!-- <div class="col-md-12 order-2 order-lg-1 col-lg-5 col-xl-6">
+                                                <div class="order-note">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input type="search" class="form-control" placeholder="Coupon Code" aria-label="Search" aria-describedby="button-addonTags">
+                                                                <div class="input-group-append">
+                                                                    <button class="input-group-text" type="submit" id="button-addonTags">Apply</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="specialNotes">Special Note for this order:</label>
+                                                            <textarea class="form-control" name="specialNotes" id="specialNotes" rows="3" placeholder="Message here"></textarea>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div> -->
+                                            <div class="col-md-12 order-1 order-lg-2 col-lg-7 col-xl-6">
+                                                <div class="order-total table-responsive ">
+                                                    <table class="table table-borderless text-right">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Sub Total :</td>
+                                                                <td>{{subTotal()}}.00 Dh</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Shipping :</td>
+                                                                <td>0.00 Dh</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tax(0%) :</td>
+                                                                <td>00.00 Dh</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="f-w-7 font-18">
+                                                                    <h4>Amount :</h4>
+                                                                </td>
+                                                                <td class="f-w-7 font-18">
+                                                                    <h4>{{subTotal()}}.00 Dh</h4>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cart-footer text-right">
+                                        <button type="button" class="btn btn-info my-1" style="font-size: 15px;
+                                        margin-right: 25px;"><i class="ri-save-line mr-2"></i>Update Cart</button>
+                                        <a (click)="buy()" class="btn btn-success my-1" style="font-size: 15px;
+    margin-right: 25px; cursor: pointer;">Proceed to Checkout<i class="ri-arrow-right-line ml-2"></i></a>
+    
+                                    </div>
+                                    <div class="alert alert-success" role="alert" *ngIf="checkOutSuccess==true"
+                                     style="    margin-top: 3%;
+                                    ">
+                                        Check Out seccuessful 
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End col -->
+        </div>
+        <!-- End row -->
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<app-footer></app-footer>

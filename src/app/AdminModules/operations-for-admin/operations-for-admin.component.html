@@ -1,0 +1,60 @@
+<!-- {{(operations$ | async).response.content | json}} -->
+
+ 
+<div class="table-responsive custom-table-responsive tw container" style="
+top: 17%;
+position: absolute;
+left: 6%;
+">
+    <ng-container *ngIf="( operations$ | async ) as appState">
+      <ng-container>
+        <table class="table custom-table">
+          <thead>
+            <tr>
+
+              <th scope="col">Date</th>
+              <th scope="col">Nom d'émetteur</th>
+              <th scope="col">Prenom d'émetteur</th>
+              <th scope="col">E-mail d'émetteur</th>
+              <th scope="col">Nom de benificiare</th>
+              <th scope="col">Prenom de benificiare</th>
+              <th scope="col">Email de benificiare</th>
+              <th scope="col">Avant Commision</th>
+              <th scope="col">Commision</th>
+              <th scope="col">Montant Net</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let operation of appState.response.content; let i = index">
+              <tr scope="row">
+             
+                <td class="td-id">
+                  {{operation.date}}
+                </td>
+                <td class="td-nom"><span>{{operation.sendingClient.firstName}}</span></td>
+                <td class="td-prenom">{{operation.sendingClient.lastName}}</td>
+                <td class="td-email">{{operation.sendingClient.email}}</td>
+                <td class="td-nom"><span>{{operation.recivingClient.firstName}}</span></td>
+                <td class="td-prenom">{{operation.recivingClient.lastName}}</td>
+                <td class="td-email">{{operation.recivingClient.email}}</td>
+                <td class="td-nom">{{operation.montant}} Dh</td>
+                <td class="td-nom">0.00 Dh</td>
+                <td class="td-nom">{{operation.montant}} Dh</td>
+              </tr>
+            
+              <tr class="spacer">
+                <td colspan="100"></td>
+              </tr>
+            </ng-container>
+            
+
+          </tbody>
+        </table>
+
+      </ng-container>
+      
+    </ng-container>
+
+  </div>  

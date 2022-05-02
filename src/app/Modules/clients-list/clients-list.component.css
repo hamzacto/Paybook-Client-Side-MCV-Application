@@ -1,0 +1,75 @@
+
+body{
+    background-color: #19191d !important;
+}
+td{
+    font-size: 1.3rem !important;
+}
+
+th{
+    font-size: 1.3rem !important;
+}
+
+.loader {
+    border: 8px solid #19191d;
+    border-radius: 50%;
+    border-top: 9px solid #3498db;
+    width: 57px;
+    height: 57px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    margin-left: 47%;
+
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+table {
+    /* position:fixed; */
+    /* overflow: hidden;  */
+    /* width: 190%!important;
+    text-overflow: ellipsis; 
+    word-wrap: break-word; */
+}
+
+/* tc{
+    margin: 0 !important;
+} */
+/* 
+.tw{
+    width: 132% !important;
+}
+
+.td-email{
+    width: 15% !important;
+}
+
+.td-id{
+    width: 5% !important;
+}
+.td-nom{ 
+    width: 10% !important;
+}
+.td-prenom{
+    width: 10% !important;
+
+}
+.td-password{
+    width: 12% !important;
+}
+.td-balance{
+    width: 13% !important;
+}
+.td-stripeID{
+    width: 13% !important;
+} */
+

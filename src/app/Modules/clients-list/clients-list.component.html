@@ -1,0 +1,117 @@
+
+<app-agent-nav-bar></app-agent-nav-bar>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Table #8</title>
+</head>
+
+<body>
+
+
+  <div class="content">
+
+    <div class="container tc">
+      <h2 class="mb-5">Gestion Clientèles</h2>
+
+
+      <div class="table-responsive custom-table-responsive tw">
+        <ng-container *ngIf="( appState$ | async ) as appState" [ngSwitch]="appState.dataState">
+          <ng-container *ngSwitchCase="DataState.LOADED_STATE">
+            <table class="table custom-table">
+              <thead>
+                <tr>
+
+                  <!-- <th scope="col">
+                    <label class="control control--checkbox">
+                      <input type="checkbox"  class="js-check-all"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                  </th> -->
+
+                  <th scope="col">ID</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Prenom</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Mot de passe</th>
+                  <th scope="col">Balance</th>
+                  <th scope="col">Stripe API id</th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let client of appState.appData.data.clients; let i = index">
+                  <tr scope="row">
+                    <!-- <th scope="row">
+                                      <label class="control control--checkbox">
+                                        <input type="checkbox"/>
+                                        <div class="control__indicator"></div>
+                                      </label>
+                                    </th> -->
+                    <td class="td-id">
+                      {{client.id}}
+                    </td>
+                    <td class="td-nom"><a href="#">{{client.firstName}}</a></td>
+                    <td class="td-prenom">
+                      {{client.lastName}}
+                      <!-- <small class="d-block">Far far away, behind the word mountains</small> -->
+                    </td>
+                    <td class="td-email">{{client.email}}</td>
+                    <td class="td-password">{{client.password}}</td>
+                    <td class="td-balance">{{client.balance}}</td>
+                    <td class="td-stripeID">{{client.stripeApiId}}</td>
+                  </tr>
+                
+                  <tr class="spacer">
+                    <td colspan="100"></td>
+                  </tr>
+                </ng-container>
+                
+
+              </tbody>
+            </table>
+
+          </ng-container>
+          <ng-container *ngSwitchCase="DataState.LOADING_STATE">
+            <div class="loader"></div>
+          </ng-container>
+          <ng-container *ngSwitchCase="DataState.ERROR_STATE">
+            <div class="alert alert-danger" role="alert">
+              une erreur s'est produite lors de la récupération des clients 
+            </div>
+          </ng-container>
+        </ng-container>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

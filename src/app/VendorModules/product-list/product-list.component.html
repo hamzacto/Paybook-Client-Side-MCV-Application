@@ -1,0 +1,57 @@
+ <!-- {{(products$ | async).resonse | json}}  -->
+
+
+
+
+
+<div class="table-responsive custom-table-responsive tw container" style="
+top: 29%;
+   position: initial;
+   left: 6%;
+   height: 81%;
+   margin-top: 10%;
+">
+  <ng-container *ngIf="( products$ | async ) as appState">
+    <ng-container>
+      <table class="table custom-table">
+        <thead>
+          <tr>
+
+            <th scope="col">Name</th>
+            <th scope="col">prix unitaire</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Date de Fabrication</th>
+            <th scope="col">Numéro de model</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let product of appState.respnse.content; let i = index">
+            <tr scope="row">
+           
+              <td class="td-id">
+                {{product.name}}
+              </td>
+              <td class="td-nom"><span>{{product.price}}</span></td>
+              <td class="td-nom"><span>{{product.categorie}}</span></td>
+              <td class="td-prenom">{{product.brand}}</td>
+              <td class="td-email">{{product.dateFabrication}}</td>
+              <td class="td-password">{{product.modelId}}</td>
+            </tr>
+          
+            <tr class="spacer">
+              <td colspan="100"></td>
+            </tr>
+          </ng-container>
+          
+
+        </tbody>
+      </table>
+
+    </ng-container>
+    
+  </ng-container>
+
+</div>

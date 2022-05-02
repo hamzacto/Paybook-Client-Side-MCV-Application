@@ -1,0 +1,62 @@
+<!-- {{(Users$ | async).response[2].email| json}}
+
+
+----------------------------------------------------------------------------------------------- -->
+
+
+
+
+<div class="table-responsive custom-table-responsive tw container" style="
+top: 17%;
+position: absolute;
+left: 6%;
+">
+    <ng-container *ngIf="( Clients$ | async ) as appState">
+      <ng-container>
+        <table class="table custom-table">
+          <thead>
+            <tr>
+
+              <th scope="col">Prenom</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Email</th>
+              <th scope="col">Balance</th>
+              <th scope="col">Date de création</th>
+              <th scope="col">activé</th>
+              <th scope="col">Derniere modification</th>
+              <th scope="col">Fournisseur</th>
+              <th scope="col">Actions</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let client of appState.response.data.clients; let i = index">
+              <tr scope="row">
+             
+                <td class="td-id">
+                  {{client.firstName}}
+                </td>
+                <td class="td-nom"><span>{{client.lastName}}</span></td>
+                <td class="td-prenom">{{client.email}}</td>
+                <td class="td-email">{{client.balance}} Dh</td>
+                <td class="td-email">{{(Users$ | async).response[i].createdDate}}</td>
+                <td class="td-email">{{(Users$ | async).response[i].enabled}}</td>
+                <td class="td-email">{{(Users$ | async).response[i].modifiedDate}}</td>
+                <td class="td-email">{{(Users$ | async).response[i].provider}}</td>
+                <td class="td-password"></td>
+              </tr>
+            
+              <tr class="spacer">
+                <td colspan="100"></td>
+              </tr>
+            </ng-container>
+            
+
+          </tbody>
+        </table>
+
+      </ng-container>
+      
+    </ng-container>
+
+  </div> 

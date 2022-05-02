@@ -1,0 +1,157 @@
+<!-- <ng-container *ngIf="dataloaded==false">
+
+
+
+
+        <div class="loader"></div>
+</ng-container>
+
+
+<div class="col-md-12">
+	<div class="card card-container">
+		<form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+			<div class="form-group">
+				<label for="number">number</label> <input type="text" class="form-control" name="number" 
+                [(ngModel)]="form.number"  />
+				
+			</div>
+			<div class="form-group">
+				<label for="holderName">holder Name</label> <input type="text" class="form-control"
+                 name="holderName" [(ngModel)]="form.holderName"/>
+				
+			</div>
+			<div class="form-group">
+				<label for="exp_month">exp_month</label> <input type="text" class="form-control" name="exp_month" 
+                [(ngModel)]="form.exp_month" 
+					#exp_month="ngModel" />
+				
+			</div>
+            <div class="form-group">
+				<label for="exp_year">exp_year</label> <input type="text" class="form-control" name="exp_year" 
+                [(ngModel)]="form.exp_year" 
+					#exp_year="ngModel" />
+			</div>
+			<div class="form-group">
+				<label for="cvc">cvc</label> <input type="text" class="form-control" name="cvc" [(ngModel)]="form.cvc"
+					#cvc="ngModel" />
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary btn-block">Sign Up</button>
+			</div>
+			<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+				Signup failed!<br />{{ errorMessage }}
+			</div>
+		</form>
+		<div class="alert alert-success" *ngIf="isSuccessful">Your registration is successful!</div>
+	</div>
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>  -->
+
+
+<ng-container *ngIf="!dataloaded">
+        <div class="loader"></div>
+</ng-container>
+
+
+<div id="form-container" style="    top: 23%;
+" *ngIf="!isSuccessful" >
+
+	<div id="card-front">
+		<div id="shadow"></div>
+		<!--- end CVC container --->
+		<!--- end exp container --->
+		<div id="card-stripe">
+		</div>
+	</div>
+	<!--- end card front --->
+	<div id="cardback" style="
+    position: inherit;
+    top: -9%;
+    height: 226px;
+    background: #498ee4;
+    width: 396px;
+	border-radius: 6px;
+	padding: 46px 30px 0;
+    color: white;
+	color: white;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size: 10px;
+    box-sizing: border-box;
+	left: -25%;
+	box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+
+
+">
+
+
+		<div id="shadow"></div>
+		<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+			<label for="card-number">
+				Card Number
+			</label>
+			<input type="text" id="card-number" placeholder="1234 5678 9101 1112" length="16" name="number"
+				[(ngModel)]="form.number">
+			<div id="cardholder-container">
+				<label for="card-holder">Card Holder
+				</label>
+				<input type="text" id="card-holder" placeholder="e.g. John Doe" name="holderName"
+					[(ngModel)]="form.holderName" />
+			</div>
+			<!--- end card holder container --->
+			<div id="exp-container">
+				<label for="card-exp">
+					Expiration
+				</label>
+				<input id="card-month" type="text" placeholder="MM" length="2" name="exp_month"
+					[(ngModel)]="form.exp_month" #exp_month="ngModel">
+				<input id="card-year" type="text" placeholder="YY" length="2" name="exp_year"
+					[(ngModel)]="form.exp_year" #exp_year="ngModel">
+			</div>
+
+			<div id="cardstripe">
+			</div>
+			<div id="cvc-container">
+				<label for="card-cvc"> CVC/CVV</label>
+				<input id="card-cvc" placeholder="XXX-X" type="text" min-length="3" max-length="4" name="cvc"
+					[(ngModel)]="form.cvc" #cvc="ngModel">
+				<p style="    margin-top: 6%;
+				">Last 3 or 4 digits</p>
+			</div>
+			<!--- end card back --->
+			<input type="text" id="card-token" />
+			<button id="card-btn" style="    top: 140%;
+			background: #498ee4;
+			color: white;     left: 180%;">Submit</button>
+			<!-- <div class="form-group">
+				<button class="btn btn-primary btn-block">Sign Up</button>
+			</div> -->
+			<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+				Registrartion failed !<br />{{ errorMessage }}
+			</div>
+		</form>
+		<!-- <div id="image-container">
+			<span id="amount">paying: <strong>$99</strong></span>
+			<span id="card-image">
+
+			</span>
+		</div> -->
+		<!--- end card image container --->
+
+
+
+	</div>
+	<!--- end form container --->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+	<script src="https://use.fontawesome.com/f1e0bf0cbc.js"></script>
+
+
+
+
+</div>
+<div class="alert alert-success" *ngIf="isSuccessful">Your registration is successful!</div>

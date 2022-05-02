@@ -1,0 +1,57 @@
+<!-- <p>sells-list works!</p> -->
+<!-- {{sellsList$ | async | json}} -->
+
+
+
+
+<div class="table-responsive custom-table-responsive tw container" style="
+top: 29%;
+   position: initial;
+   left: 6%;
+   height: 81%;
+   margin-top: 10%;
+">
+  <ng-container *ngIf="( sellsList$ | async ) as appState">
+    <ng-container>
+      <table class="table custom-table">
+        <thead>
+          <tr>
+
+            <th scope="col">montant</th>
+            <th scope="col">E-mail du client</th>
+            <th scope="col">Nom du client</th>
+            <th scope="col">Prenom du client</th>
+            <th scope="col">Nom de produit</th>
+            <th scope="col">Brand de produit</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let sell of appState.response.content; let i = index">
+            <tr scope="row">
+           
+              <td class="td-id">
+                {{sell.amount}}
+              </td>
+              <td class="td-nom"><span>{{sell.client.email}}</span></td>
+              <td class="td-nom"><span>{{sell.client.firstName}}</span></td>
+              <td class="td-prenom">{{sell.client.lastName}}</td>
+              <td class="td-email">{{sell.product.name}}</td>
+              <td class="td-password">{{sell.product.brand}}</td>
+            </tr>
+          
+            <tr class="spacer">
+              <td colspan="100"></td>
+            </tr>
+          </ng-container>
+          
+
+        </tbody>
+      </table>
+
+    </ng-container>
+    
+  </ng-container>
+
+</div> 

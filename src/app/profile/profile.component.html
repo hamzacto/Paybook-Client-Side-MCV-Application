@@ -1,0 +1,597 @@
+<ng-template #loggedOut> Please login. </ng-template>
+<!-- Basic -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Mobile Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<!-- Site Metas -->
+<link rel="icon" href="images/fevicon.png" type="image/gif" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>Minics</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,900;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,900;1,400&family=Raleway:wght@300&display=swap" rel="stylesheet">
+<!-- fonts style -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+<!-- range slider -->
+<link href="./style.css" rel="stylesheet"> <!-- range slider -->
+
+
+
+<div class="main-content" *ngIf="currentUser; else loggedOut" style="    position: relative;
+background-color: #f8f9fe;
+">
+
+
+	<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+		style="min-height: 600px; background-image: url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+		<!-- Mask -->
+		<span class="mask bg-gradient-default opacity-8"></span>
+		<!-- Header container -->
+		<div class="container-fluid d-flex align-items-center">
+			<div class="row">
+				<div class="col-lg-7 col-md-10">
+					<h1 class="display-2 text-white" style="    font-weight: 300;
+
+		  font-size: xxx-large;
+	  ">Hello {{(appState$ | async).appData.data.client.firstName }}</h1>
+					<p class="text-white mt-0 mb-5" style="font-weight: 300;
+		  font-size: large;
+	  ">This is your profile page. You can see All the informations related to your financial activity and E-payament operations</p>
+					<!-- <a href="#!" class="btn btn-info" style="font-weight: 300;
+		  font-size: medium;
+	  "></a> -->
+				</div>
+			</div>
+		</div>
+
+		<div class="area">
+			<ul class="circles">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+
+
+
+
+	<div class="container container-fluid mt--7" style="
+    margin-left: 0;
+    margin: 0;
+">
+		<div class="main-body row" style="    width: 127%;
+		">
+
+			<!-- Breadcrumb -->
+
+			<!-- /Breadcrumb -->
+
+			<div class="row gutters-sm" style="
+			margin-bottom: 165px;
+		">
+				<div class="col-md-4 mb-3 col-xl-4 order-xl-2 mb-5 mb-xl-0" style="    padding-left: 79px;
+				"> 
+					<div class="" style="    width: 370px;
+					">
+						<div class="card " style="
+						width: 134%;
+					">
+							<div class="card-body">
+								<div class="d-flex flex-column align-items-center text-center" style="
+								top: 6%;
+								position: unset;
+								margin-top: -30%;
+							">
+
+									<div class="profile-pic">
+										<label class="-label" for="file">
+											<span class="glyphicon glyphicon-camera"></span>
+											<span>Change Image</span>
+										</label>
+										<input id="file" type="file" (change)="onFileChanged($event)" />
+										<img src="data:image/png;base64,{{(appState$ | async).appData.data.client.image }}"
+											id="output" width="200" class="rounded-circle" />
+									</div>
+
+									<div class="mt-3 card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+										<div class="text-center">
+											<h3 style="font-size: x-large;
+											font-family: inherit;
+											font-stretch: unset;
+											font-synthesis: initial;
+											font-feature-settings: initial;
+											font-weight: 600;">{{ currentUser.displayName }}</h3>
+										<div class="h5 mt-4" style="
+										font-size: small;
+										font-family: inherit;
+										font-weight: 500;
+									">
+
+											{{ currentUser.email }}
+										</div>
+										<p class="text-secondary mb-1"></p>
+										<p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="card mt-3 d-flex flex-column align-items-center text-center" id="balanceholder" style="
+						width: 134%;
+					">
+							<ul class="list-group list-group-flush">
+								<div class="col-xl-8 order-xl-1">
+									<h2 class="card-title card bg-secondary shadow" styles="    color: #2c2e2f;
+							display: inline;
+							font-family: PayPalSansBig-Medium,'Helvetica Neue',Arial,sans-serif;
+							font-size: 18px;
+							font-weight: 500;
+							line-height: 1.5rem;
+							margin: 0px;
+							padding: 6px 0px;
+							text-transform: none;">Solde </h2>
+									<div style="    margin: 0px;
+							color: #2c2e2f;
+							text-align: left;">
+										<span style="display: inline-block;
+							font-family: PayPalSansBig-Light,'Helvetica Neue',Arial,sans-serif;
+							font-weight: 400;
+							font-size: 40px;
+							line-height: 56px;
+							margin: 0px;
+							overflow-wrap: break-word;
+							white-space: nowrap;">{{(appState$ | async).appData.data.client.balance }} DH</span>
+									</div>
+									<h4 class="card-subtitle mb-2 text-muted"></h4>
+									<h5 style="color: #687173;
+							display: inline;
+							font-family: PayPalSansSmall-Regular,'Helvetica Neue',Arial,sans-serif;
+							font-size: 15px;
+							font-weight: 400;
+							line-height: 24px;
+							vertical-align: middle;">disponible</h5>
+
+									<button type="button" class="btn btn-primary" style="
+								display: flex;
+								margin-top: 6%;
+								font-size: medium;
+							">Treansfer funds </button>
+
+								</div>
+							</ul>
+						</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+						<div class="d-flex flex-column align-items-center text-center" id="balanceholder" style="
+						width: 134%;    margin-top: 10%;
+
+					" >
+							<div class="card bg-secondary shadow" style="width: 100%;">
+							  <div class="card-header bg-white border-0">
+								<div class="row align-items-center">
+								  <div class="col-8">
+									<h3 class="mb-0" style="font-size: 25px;margin-left: -199px;font-family: 'Lato', sans-serif;">Solde</h3>
+								  </div>
+								</div>
+							  </div>
+							  <div class="card-body">
+								  <h6 class="heading-small text-muted mb-4" style="font-size: 31px;
+								  margin-left: -3%;
+								  margin-top: -28px;
+								  font-family: 'Raleway', sans-serif;">{{(appState$ | async).appData.data.client.balance }} Dh</h6>
+									<div class="row">
+			
+									  <div class="col-lg-6">
+										  <label class="form-control-label" for="input-email" style="position: absolute;
+										  left: 112%;
+										  top: 19%;
+										  bottom: 14%;
+										  margin-top: -10%;
+										  font-size: 14px;
+										  font-family: 'Raleway', sans-serif;">disponible</label>
+										 
+									  </div>
+									</div>
+									
+								  <hr class="my-4">
+							  </div>
+							</div>
+
+							<div>
+								<h2 class="heading-small text-muted mb-4" style="    font-size: 25px;
+								margin-left: -241%;
+								margin-top: 18px;">Analyses</h2>
+							</div>
+							<div class="card bg-secondary " style="width: 100%;
+							">
+								<div class="card-header bg-white border-0">
+								  <div class="row align-items-center">
+									<div class="col-8">
+									  <h3 class="mb-0" style="font-size: 25px;margin-left: -199px;font-family: 'Lato', sans-serif;">Crédit </h3>
+									</div>
+								  </div>
+								</div>
+								<div class="card-body">
+									<h6 class="heading-small text-muted mb-4" style="font-size: 31px;
+									margin-left: -3%;
+									margin-top: -28px;
+									font-family: 'Raleway', sans-serif;">0 Dh</h6>
+									  <div class="row">
+			  
+										<div class="col-lg-6">
+											<label class="form-control-label" for="input-email" style="position: absolute;
+											left: 112%;
+											top: 19%;
+											bottom: 14%;
+											margin-top: -10%;
+											font-size: 14px;
+											font-family: 'Raleway', sans-serif;
+											width:fit-content">Total reçu</label>
+										   
+										</div>
+									  </div>
+									  
+									<hr class="my-4">
+								</div>
+							  </div>
+
+
+
+							  <div class="card bg-secondary " style="width: 100%;  margin-top: 33px; ">
+								<div class="card-header bg-white border-0">
+								  <div class="row align-items-center">
+									<div class="col-8">
+									  <h3 class="mb-0" style="font-size: 25px;margin-left: -199px; font-family: 'Lato', sans-serif;">Débit</h3>
+									</div>
+								  </div>
+								</div>
+								<div class="card-body">
+									<h6 class="heading-small text-muted mb-4" style="font-size: 31px;
+									margin-left: -3%;
+									margin-top: -28px;
+									font-family: 'Raleway', sans-serif;">0 Dh</h6>
+									  <div class="row">
+			  
+										<div class="col-lg-6">
+											<label class="form-control-label" for="input-email" style="position: absolute;
+											left: 98%;
+											top: 19%;
+											bottom: 14%;
+											margin-top: -10%;
+											font-size: 14px;
+											font-family: 'Raleway', sans-serif;
+											width:fit-content">Montant total envoyé ou dépensé</label>
+										   
+										</div>
+									  </div>
+									  
+									<hr class="my-4">
+								</div>
+							  </div>
+						  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					</div>
+
+				</div>
+				<!-- <div class="col-md-8">
+					<div class="card mb-3">
+						<div class="card-body">
+							<div class="row">
+								<h3>User details</h3>
+							</div>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Full Name</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{(appState$ | async).appData.data.client.firstName }} {{(appState$ |
+									async).appData.data.client.lastName }}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Email</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{ currentUser.email }}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Phone</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									(239) 816-9029
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Mobile</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									(320) 380-4539
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Roles :</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<ul>
+										<p *ngFor="let role of currentUser.roles" style="
+								font-size: revert;
+								margin-left: -21px;
+							">{{ role }}</p>
+									</ul>
+								</div>
+							</div>
+
+
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Address</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									Bay Area, San Francisco, CA
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-12">
+									<a class="btn btn-info " id="btnInfo" target="__blank"
+										href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div> -->
+
+
+
+
+
+
+
+
+
+				<div class="col-xl-8 order-xl-1" style="
+				margin-bottom: 72px;
+			">
+					<div class="card bg-secondary shadow">
+					  <div class="card-header bg-white border-0">
+						<div class="row align-items-center">
+						  <div class="col-8">
+							<h3 class="mb-0" style="
+							font-size: large;
+						">My account</h3>
+						  </div>
+						  <div class="col-4 text-right">
+							<!-- <a href="#!" class="btn btn-sm btn-primary" style="    font-size: 12px;
+							">Modifier</a> -->
+						  </div>
+						</div>
+					  </div>
+					  <div class="card-body">
+						<form>
+						  <h6 class="heading-small text-muted mb-4" style="font-size:11px !important;">User information</h6>
+						  <div class="pl-lg-4" style="
+						  font-size: large;
+					  ">
+							<div class="row" style="
+							font-size: large;
+						">
+							  <div class="col-lg-6" style="
+							  font-size: large;
+						  ">
+								<div class="form-group focused" style="
+								font-size: large;
+							">
+								  <label class="form-control-label" for="input-username" style="font-size: 14px;
+								  font-weight: 500;">Username</label>
+								  <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="{{ currentUser.displayName }}" style="font-size: small;
+								  height: 39px;">
+								</div>
+							  </div>
+							  <div class="col-lg-6" style="
+							  font-size: large;
+						  ">
+								<div class="form-group" style="
+								font-size: large;
+							">
+								  <label class="form-control-label" for="input-email"  style="font-size: 14px;
+								  font-weight: 500;">Email address</label>
+								  <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Email address" style="font-size: small;
+								  height: 39px;" value="{{ currentUser.email }}">
+								</div>
+							  </div>
+							</div>
+							<div class="row"style="
+							font-size: large;
+						">
+							  <div class="col-lg-6" style="
+							  font-size: large;
+						  ">
+								<div class="form-group focused" style="
+								font-size: large;
+							">
+								  <label class="form-control-label" for="input-first-name"  style="font-size: 14px;
+								  font-weight: 500;">First name</label>
+								  <input type="text" id="input-first-name" class="form-control form-control-alternative" style="font-size: small;
+								  height: 39px;" placeholder="First name" value="{{(appState$ | async).appData.data.client.firstName }}">
+								</div>
+							  </div>
+							  <div class="col-lg-6"style="
+							  font-size: large;
+						  ">
+								<div class="form-group focused" style="
+								font-size: large;
+							">
+								  <label class="form-control-label" for="input-last-name"  style="font-size: 14px;
+								  font-weight: 500;">Last name</label>
+								  <input type="text" id="input-last-name" class="form-control form-control-alternative" style="font-size: small;
+								  height: 39px;" placeholder="Last name" value="{{(appState$ | async).appData.data.client.lastName }}">
+								</div>
+							  </div>
+							</div>
+						  </div>
+						  <hr class="my-4">
+						  <!-- Address -->
+						  <h6 class="heading-small text-muted mb-4" style="font-size:11px !important;">Contact information</h6>
+						  <div class="pl-lg-4" style="
+						  font-size: large;
+					  ">
+							<div class="row" style="
+							font-size: large;
+						">
+							  <div class="col-md-12" style="
+							  font-size: large;
+						  ">
+								<div class="form-group focused" style="
+								font-size: large;
+							">
+								  <label class="form-control-label" for="input-address"  style="font-size: 14px;
+								  font-weight: 500;">Address</label>
+								  <input id="input-address" style="font-size: small;
+								  height: 39px;" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+								</div>
+							  </div>
+							</div>
+							<div class="row" style="
+							font-size: large;
+						">
+							  <div class="col-lg-4" style="
+							  font-size: large;
+						  ">
+								<div class="form-group focused" style="
+								font-size: large;
+							">
+								  <label class="form-control-label" for="input-city"  style="font-size: 14px;
+								  font-weight: 500;">City</label>
+								  <input type="text" style="font-size: small;
+								  height: 39px;" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
+								</div>
+							  </div>
+							  <div class="col-lg-4" style="
+							  font-size: large;
+						  ">
+								<div class="form-group focused" style="
+								font-size: large;
+							">
+								  <label class="form-control-label" for="input-country"  style="font-size: 14px;
+								  font-weight: 500;">Country</label>
+								  <input type="text" style="font-size: small;
+								  height: 39px;" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
+								</div>
+							  </div>
+							  <div class="col-lg-4" style="
+							  font-size: large;
+						  ">
+								<div class="form-group" style="
+								font-size: large;
+							">
+								  <label class="form-control-label" for="input-country"  style="font-size: 14px;
+								  font-weight: 500;">Postal code</label>
+								  <input type="number" style="font-size: small;
+								  height: 39px;" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+								</div>
+							  </div>
+							</div>
+						  </div>
+						  <hr class="my-4">
+						  <!-- Description -->
+						  <h6 class="heading-small text-muted mb-4" style="font-size:11px !important;">About me</h6>
+						  <div class="pl-lg-4" style="
+						  font-size: large;
+					  ">
+							<div class="form-group focused" style="
+							font-size: large;
+						">
+							  <label  style="font-size: 14px;
+							  font-weight: 500;">About Me</label>
+							  <textarea  style="font-size: 14px;
+							  font-weight: 500;" rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">tell us more about you.</textarea>
+							</div>
+						  </div>
+						</form>
+					  </div>
+					</div>
+				  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+<app-footer></app-footer>

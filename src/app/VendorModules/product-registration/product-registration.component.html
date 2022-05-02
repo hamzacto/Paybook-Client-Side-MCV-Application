@@ -1,0 +1,87 @@
+
+<ng-container *ngIf="dataloaded==false">
+    <div class="loader"></div>
+</ng-container>
+
+<div class="container" *ngIf="isSuccesful==false">  
+    <form id="contact" action="..." method="post"  name="form" (ngSubmit)="f.form.valid && RegisterProduct()" #f="ngForm" enctype="multipart/form-data" novalidate>
+      <h3>enregistrement du produit</h3>
+      <h4>veuillez insérer les détails de votre produit</h4>
+      <fieldset>
+        <input placeholder="Nom du produit" type="text" tabindex="1" name="name" required autofocus [(ngModel)]="product.name">
+      </fieldset>
+      <fieldset>
+        <input placeholder="Prix du produit" type="text" tabindex="2" name="price" required [(ngModel)]="product.price">
+      </fieldset>
+      <fieldset>
+        <input placeholder="Catégorie du produit" type="text" tabindex="3" name="categorie" required [(ngModel)]="product.categorie">
+      </fieldset>
+      <fieldset>
+        <input placeholder="Brand" type="text" tabindex="4" name="brand" required [(ngModel)]="product.brand">
+      </fieldset>
+      <fieldset>
+        <input placeholder="Date de fabrication" type="text" tabindex="4" name="dateFabrication" required [(ngModel)]="product.dateFabrication">
+      </fieldset>
+      <fieldset>
+        <input placeholder="numéro du model" type="tel" tabindex="4" name="modelId" required [(ngModel)]="product.modelId">
+      </fieldset>
+      <fieldset>
+        <div class="col-md-6">
+          <input type="file" (change)="onFileChanged($event)"  method="POST" enctype="multipart/form-data" action="/" >
+        </div>
+      </fieldset>
+      
+      <!-- <fieldset>
+        <textarea placeholder="Date de fabrication" type="date" tabindex="4" required></textarea>
+      </fieldset>
+      <fieldset>
+        <textarea placeholder="numéro du model " tabindex="5" required></textarea>
+      </fieldset> -->
+      <fieldset>
+        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Enregistrer</button>
+      </fieldset>
+    </form>
+  </div>
+  <div id='card' class="animated fadeIn" *ngIf="isSuccesful==true" style="    margin-bottom: 23%;
+  ">
+    <div id='upper-side'>
+        <!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+        <svg version="1.1" id="checkmark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" xml:space="preserve">
+          <path d="M131.583,92.152l-0.026-0.041c-0.713-1.118-2.197-1.447-3.316-0.734l-31.782,20.257l-4.74-12.65
+      c-0.483-1.29-1.882-1.958-3.124-1.493l-0.045,0.017c-1.242,0.465-1.857,1.888-1.374,3.178l5.763,15.382
+      c0.131,0.351,0.334,0.65,0.579,0.898c0.028,0.029,0.06,0.052,0.089,0.08c0.08,0.073,0.159,0.147,0.246,0.209
+      c0.071,0.051,0.147,0.091,0.222,0.133c0.058,0.033,0.115,0.069,0.175,0.097c0.081,0.037,0.165,0.063,0.249,0.091
+      c0.065,0.022,0.128,0.047,0.195,0.063c0.079,0.019,0.159,0.026,0.239,0.037c0.074,0.01,0.147,0.024,0.221,0.027
+      c0.097,0.004,0.194-0.006,0.292-0.014c0.055-0.005,0.109-0.003,0.163-0.012c0.323-0.048,0.641-0.16,0.933-0.346l34.305-21.865
+      C131.967,94.755,132.296,93.271,131.583,92.152z" />
+          <circle fill="none" stroke="#ffffff" stroke-width="5" stroke-miterlimit="10" cx="109.486" cy="104.353" r="32.53" />
+        </svg>
+        <h3 id='status'>
+            Succès
+      </h3>
+    </div>
+    <div id='lower-side'>
+      <p id='message'>
+        Votre produit {{product.name}} a éte bien enregistré
+      </p>
+      <a href="http://localhost:4200/product/new" id="contBtn">Continue</a>
+    </div>
+  </div>
+  <app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

@@ -1,0 +1,10 @@
+*{
+    font-size: 16px;
+}
+li{
+    margin-right: 21px;
+}
+.brand{
+    height: auto;
+    font-size: 1.66rem !important;
+}

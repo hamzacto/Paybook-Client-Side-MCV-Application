@@ -1,0 +1,338 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container d-flex justify-content-center flex-column align-content-md-end" style=" position: initial;left: 5%;top: 18%;margin-top: 8%;margin-bottom: 22%; ">
+
+  <div class="content" [ngClass]="chargeCardPop || isupdatepoped ? 'blurclass' : 'content'">
+
+    <div class="container tc">
+      <h2 class="mb-5">Mes cartes</h2>
+
+      <ul class="nav ulNav">
+        <li class="nav-item">
+          <a href="http://localhost:4200/card/link" class="nav-link">New Card</a>
+        </li>
+        <li class="nav-item secitem ">
+          <div class="d-flex align-items-end flex-column">
+            <!-- <button type="button" class="btn btn-primary noblur" id="chargeCard" (click)="startcharge()">Charge from
+              default Card </button> -->
+              <a class="button" (click)="startcharge()"><span id="spanCharge">Charge from
+                default Card </span></a>
+          </div>
+
+        </li>
+      </ul>
+
+
+
+      <!-- <div class="table-responsive custom-table-responsive tw">
+        <ng-container *ngIf="( appState$ | async ) as appState" [ngSwitch]="appState.dataState">
+          <ng-container *ngSwitchCase="DataState.LOADED_STATE">
+            <table class="table custom-table">
+              <thead>
+                <tr>
+
+                  <th scope="col">balance</th>
+                  <th scope="col">cvc</th>
+                  <th scope="col">exp month</th>
+                  <th scope="col">exp year</th>
+                  <th scope="col">holder name</th>
+                  <th scope="col">isDefault</th>
+                  <th scope="col">numero</th>
+                  <th scope="col">actions</th>
+
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let card of appState.appData.data.cards; let i = index">
+                  <tr scope="row">
+                   
+                    <td class="td-id">
+                      {{card.balance}}
+                    </td>
+                    <td class="td-nom"><a href="#">{{card.cvc}}</a></td>
+                    <td class="td-prenom">
+                      {{card.exp_month}}
+                    
+                    </td>
+                    <td class="td-email">{{card.exp_year}}</td>
+                    <td class="td-password">{{card.holderName}}</td>
+                    <td class="td-balance">{{card.isDefault}}</td>
+                    <td class="td-stripeID">{{card.number}}</td>
+                    <td class="td-stripeID">
+                      <button type="button" class="btn btn-warning" (click)="deleteCard(card.id)">delete</button>
+                      <button type="button" class="btn btn-warning" (click)="startupdate(card.id)"
+                        id="updateButton">update</button>
+                    </td>
+                  </tr>
+
+                  <tr class="spacer">
+                    <td colspan="100"></td>
+                  </tr>
+                </ng-container>
+
+
+              </tbody>
+            </table>
+
+          </ng-container>
+          <ng-container *ngSwitchCase="DataState.LOADING_STATE">
+            <div class="loader"></div>
+          </ng-container>
+          <ng-container *ngSwitchCase="DataState.ERROR_STATE">
+            <div class="alert alert-danger" role="alert">
+              une erreur s'est produite lors de la récupération des clients
+            </div>
+          </ng-container>
+        </ng-container>
+
+      </div> -->
+
+
+    </div>
+
+
+  </div>
+  <!-- testing -->
+  <ng-container *ngIf="isupdatepoped" class="d-flex justify-content-center p-2 container">
+
+    <div class="col-md-12 updateBox container d-flex">
+      <div class="card card-container" style="width: 50rem;" id="cardupdateBox">
+        <div id="cardUpdateHolderdiv" class="d-flex">
+
+          <div id="card-header">
+            <h5 class="card-header">Update Credit Card</h5>
+          </div>
+          <button type="button" class="btn btn-link fa-lg" (click)="cancelUpdate()"><span class="bi bi-x"></span>
+          </button>
+
+        </div>
+        <form name="form" (ngSubmit)="f.form.valid && updateCard()" #f="ngForm" novalidate>
+          <div class="form-group">
+            <label for="number">number</label> <input type="text" class="form-control" name="number"
+              [(ngModel)]="form.number" #number="ngModel" />
+
+          </div>
+          <div class="form-group">
+            <label for="holderName">holder Name</label> <input type="text" class="form-control" name="holderName"
+              [(ngModel)]="form.holderName" #holderName="ngModel" />
+
+          </div>
+          <div class="form-group">
+            <label for="exp_month">exp_month</label> <input type="text" class="form-control" name="exp_month"
+              [(ngModel)]="form.exp_month" #exp_month="ngModel" />
+
+          </div>
+          <div class="form-group">
+            <label for="exp_year">exp_year</label> <input type="text" class="form-control" name="exp_year"
+              [(ngModel)]="form.exp_year" #exp_year="ngModel" />
+          </div>
+          <div class="form-group">
+            <label for="cvc">cvc</label> <input type="text" class="form-control" name="cvc" [(ngModel)]="form.cvc"
+              #cvc="ngModel" />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block">update card </button>
+          </div>
+          <div class="alert alert-warning" *ngIf="f.submitted && !isSuccessful">
+            Signup failed!<br />{{ errorMessage }}
+          </div>
+        </form>
+        <div class="alert alert-success" *ngIf="isSuccessful">Your registration is successful!</div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="chargeCardPop" class="d-flex justify-content-center p-2">
+    <div id="ChargeBox">
+      <ng-container *ngIf="chargeLoading">
+        <div class="loader"></div>
+</ng-container>
+      <div class="card " id="cardChargeBox" style="    width: 25rem;     top: 43%;
+      left: 74%;
+      ">
+        <div id="cardHolderdiv" class="d-flex">
+          <h5 class="card-header">Charge From Default Credit Card</h5>
+
+          <button type="button" class="btn btn-link fa-lg" (click)="cancelCharge()"><span class="bi bi-x"></span>
+          </button>
+
+        </div>
+
+        <div class="card-body">
+          <form name="charge" #f="ngForm" (ngSubmit)="chargeDefault()" novalidate>
+            <div class="form-group">
+              <label for="amount">amount</label>
+              <input type="text" class="form-control" name="amount" [(ngModel)]="charge.amount" #number="ngModel" />
+              
+            </div>
+            <!-- <div class="form-group">
+              <label for="raison">raison</label> 
+              <input type="text" class="form-control" name="raison"
+                [(ngModel)]="charge.raison" #number="ngModel" />
+              
+            </div> -->
+            <div class="form-group ">
+              <button class="btn btn-primary btn-block">charge card </button>
+            </div>
+             <!-- <div class="alert alert-warning" *ngIf="f.submitted && !chargeSuccessful">
+              Signup failed!<br />{{ errorMessage }}
+            </div> -->
+
+          </form>
+          <div class="alert alert-success" *ngIf="chargeSuccessful">Rcharge d'un monatnt de {{charge.amount}} a éte effectué avec succès</div>
+
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+
+
+
+
+
+  <ng-container *ngIf="( appState$ | async ) as appState" [ngSwitch]="appState.dataState" >
+    <ng-container *ngFor="let card of appState.appData.data.cards; let i = index">
+      <div class="d-flex flex-row" id="onscreen" *ngIf="  toDisplayCardId == i
+    "  [ngClass]="chargeCardPop || isupdatepoped ? 'hideCards' : 'content'" style="
+    margin-top: 10%;
+    margin-left: -12%;
+">
+      <div class="p-2 arrowIconHolder" *ngIf="cardsNumber>toDisplayCardId+1" [ngclass]="(cardsNumber)? 'blurarrow' : 'content'">
+        <button type="button" class="btn btn-link fa-lg" (click)="nextCard()" ><span class="bi bi-arrow-right arrowIcon"></span>
+        </button>
+      </div>
+      <div class="card container p-2"  style="left:15%; border:none;">
+        <div class="card__front card__part">
+          <img class="card__front-square card__square" src="./../../assets/img/visalogo.png">
+          <img class="card__front-logo card__logo"
+            src="./../../assets/img/verified-by-visa-logo.png">
+          <p class="card_numer">{{card.number}}</p>
+          <div class="card__space-75">
+            <span class="card__label">Card holder</span>
+            <p class="card__info">{{card.holderName}}</p>
+          </div>
+          <div class="card__space-25">
+            <span class="card__label">Expires</span>
+            <p class="card__info">{{card.exp_month}}/{{card.exp_year}}</p>
+          </div>
+        </div>
+  
+        <div class="card__back card__part">
+          <div class="card__black-line"></div>
+          <div class="card__back-content">
+            <div class="card__secret">
+              <p class="card__secret--last">{{card.cvc}}</p>
+            </div>
+            <img class="card__back-square card__square" src="./../../assets/img/visalogo.png">
+            <img class="card__back-logo card__logo"
+            src="https://conta.nubank.com.br/images/nu-white.png">
+  
+          </div>
+        </div>
+  
+      </div>
+      <div class="p-2 container d-flex flex-column card justify-content-center">
+        <div class="card-body d-flex flex-column justify-content-center" style="
+      position: absolute;
+      top: 0;
+      width: 97%;
+  
+  ">
+          <h2 class="card-header">actions</h2>
+          <td class="td-stripeID" style="
+      position: absolute;
+      top: 105%;
+      width: inherit;
+  ">
+            <div class="d-flex flex-row justify-content-center" style="    margin: 2%;
+            ">
+              <button type="button" class="btn btn-warning card-link btn-lg" (click)="deleteCard(card.id)">delete</button>
+              <button type="button" class="btn btn-info card-link btn-lg" id="updateButton" (click)="startupdate(card.id)">update</button>
+            </div>
+            <div class="d-flex flex-row justify-content-center" style="
+            margin-top: 7%;
+        ">
+              <div class="form-check form-switch" style="    font-size: medium; margin : 5%;
+              ">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Set as default</label>
+              </div>
+            </div>
+  
+          </td>
+        </div>
+      </div>
+
+      <div class="p-2 arrowleftIconHolder" *ngIf="toDisplayCardId>0">
+        <button type="button" class="btn btn-link fa-lg" (click)="previousCard()"><span class="bi bi-arrow-left arrowIcon"></span>
+        </button>
+      </div>
+      
+    </div>
+  
+    
+  
+    </ng-container>
+  
+  
+  </ng-container>
+
+ 
+  
+
+
+
+</div>
+
+
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+<app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+

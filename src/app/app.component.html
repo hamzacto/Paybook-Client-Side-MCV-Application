@@ -1,0 +1,216 @@
+<!-- <div id="app">
+	<nav class="navbar navbar-expand navbar-dark bg-dark">
+		<a class="navbar-brand p-0" href="/">
+		</a>
+		<ul class="navbar-nav mr-auto" routerLinkActive="active">
+			<li class="nav-item"><a href="/home" class="nav-link" routerLink="home">Home </a></li>
+			<li class="nav-item" *ngIf="showAdminBoard"><a href="/admin" class="nav-link" routerLink="admin">Admin Board</a></li>
+			<li class="nav-item" *ngIf="showModeratorBoard"><a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a></li>
+			<li class="nav-item"><a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a></li>
+			<li class="nav-item"><a href="/Cards" class="nav-link" *ngIf="isLoggedIn" routerLink="cards">My Cards</a></li>
+		</ul>
+		<ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+			<li class="nav-item"><a href="/register" class="nav-link" routerLink="register">Sign Up</a></li>
+			<li class="nav-item"><a href="/login" class="nav-link" routerLink="login">Login</a></li>
+		</ul>
+		<ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+			<li class="nav-item"><a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a></li>
+			<li class="nav-item"><a href class="nav-link" (click)="logout()">LogOut</a></li>
+		</ul>
+	</nav>
+	<div class="container-fluid bg-light">
+		<router-outlet></router-outlet>
+	</div>
+</div> -->
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Website Menu #3</title>
+  </head>
+  <body>
+
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+    <header class="site-navbar" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center">
+          
+          <div class="col-11 col-xl-2">
+            <h1 class="mb-0 site-logo"><a href="index.html" class="text-white mb-0"></a></h1>
+          </div>
+          <div class="col-12 col-md-10 d-none d-xl-block">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+
+              <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                
+                <li *ngIf="!isLoggedIn" (click)="status = 0" [ngClass]="status == 0 ? 'active' : 'content'"><a href="/home" class="nav-link" routerLink="home"><span>Home</span></a></li>
+                <li *ngIf="isLoggedIn" (click)="status = 11" [ngClass]="status == 11 ? 'active' : 'content'"><a href="/home" class="nav-link" routerLink="MarketPlace"><span>Market place</span></a></li>
+                <li *ngIf="isLoggedIn" (click)="status = 20" [ngClass]="status == 20 ? 'active' : 'content'"><a href="/send/mail" class="nav-link" routerLink="send/mail"><span>Mailing space</span></a></li>
+
+                <li class="has-children"  *ngIf="showAdminBoard" (click)="status = 8" [ngClass]="status == 8 ? 'active' : 'content'">
+                  
+                  
+                  <a href="/home" class="nav-link" routerLink="Clients"><span>Gestion</span></a>
+                  <ul class="dropdown arrow-top" routerLinkActive="active" >
+                    <li class="dropLi"><a href="#" routerLink="Clients" >Gestion clientèle</a></li>
+                   
+                  </ul>
+                
+                </li>
+                
+                
+                <li *ngIf="showAdminBoard" (click)="status = 7" [ngClass]="status == 7 ? 'active' : 'content'"><a href="/admin" class="nav-link" routerLink="admin"><span>Admin Board</span></a></li>
+                <li class="has-children" *ngIf="showModeratorBoard" (click)="status = 10" [ngClass]="status == 10 ? 'active' : 'content'" ><a href="/mod" class="nav-link" routerLink="vendor/dashbord"><span>outils du vendeur</span></a>
+                  <ul class="dropdown arrow-top" routerLinkActive="active" >
+                    <li class="dropLi"><a href="#" routerLink="product/new" >Nouveau produit</a></li>
+                   
+                  </ul>
+                
+                </li>
+                <li class="has-children" *ngIf="isLoggedIn"  (click)="status = 1" [ngClass]="status == 1 ? 'active' : 'content'">
+                  <a routerLink="operationsList"><span>Virements</span></a>
+                  <ul class="dropdown arrow-top" routerLinkActive="active" >
+                    <li class="dropLi"><a href="#" routerLink="operationsList" >Historique des opérations</a></li>
+                    <li class="dropLi"><a href="#" routerLink="tranfer">Effectuer un virement</a></li>
+                    <!-- <li class="has-children">
+                      <a href="#">Dropdown</a>
+                      <ul class="dropdown">
+                        <li><a href="#">Menu One</a></li>
+                        <li><a href="#">Menu Two</a></li>
+                        <li><a href="#">Menu Three</a></li>
+                        <li><a href="#">Menu Four</a></li>
+                      </ul>
+                    </li> -->
+                  </ul>
+                </li>
+                <li class="has-children" (click)="status = 2" [ngClass]="status == 2 ? 'active' : 'content'" ><a href="/Cards" class="nav-link" *ngIf="isLoggedIn" routerLink="cards"><span>My Cards</span></a>
+                
+                  <ul class="dropdown arrow-top" routerLinkActive="active" >
+                    <li class="dropLi"><a href="#" routerLink="card/link" >New Card</a></li>
+                  </ul>
+                
+                
+                </li>
+                <!-- <li><a href="about.html"><span>About</span></a></li>
+                <li><a href="blog.html"><span>Blog</span></a></li>
+                <li><a href="contact.html"><span>Contact</span></a></li> -->
+                <li *ngIf="isLoggedIn"  (click)="status = 3" [ngClass]="status == 3 ? 'active' : 'content'" ><a href="/profile" class="nav-link" routerLink="profile"><span>{{ username }}</span></a></li>
+                <li *ngIf="isLoggedIn"  (click)="status = 4" [ngClass]="status == 4 ? 'active' : 'content'"><a href (click)="logout()"><span>LogOut</span></a></li>
+                <li *ngIf="!isLoggedIn" (click)="status = 5" [ngClass]="status == 5 ? 'active' : 'content'"><a href="/register"  routerLink="register"><span>Sign Up</span> </a></li>
+                <li *ngIf="!isLoggedIn" (click)="status = 6" [ngClass]="status == 6 ? 'active' : 'content'"><a href="/login"  routerLink="login"><span>Login</span> </a></li>
+              </ul>
+              
+              
+                
+              
+            </nav>
+          </div>
+
+
+          <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+
+        </div>
+      <!-- </div> -->
+      
+    </header>
+  <div id="separator"></div>
+	<router-outlet></router-outlet>
+
+
+    <!-- <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/main.js"></script> -->
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>

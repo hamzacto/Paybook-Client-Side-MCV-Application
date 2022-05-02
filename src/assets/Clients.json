@@ -1,0 +1,37 @@
+{
+    "timestamp": "2022-02-24T00:29:53.2955077",
+    "statusCode": 200,
+    "status": "OK",
+    "message": "clients fetched successfully",
+    "data": {
+        "clients": [
+            {
+                "id": 1,
+                "firstName": "hamza",
+                "lastName": "elmakdem",
+                "email": "hamzaelmkadem20@gmail.com",
+                "password": "hamzajava",
+                "balance": 300.0,
+                "stripeApiId": "fdlknf"
+            },
+            {
+                "id": 2,
+                "firstName": "anass",
+                "lastName": "elmakdem",
+                "email": "anasselmkadem20@gmail.com",
+                "password": "anasspython",
+                "balance": 231.0,
+                "stripeApiId": "S?KD "
+            },
+            {
+                "id": 3,
+                "firstName": "hassan",
+                "lastName": "karaoui",
+                "email": "hassan20@gmail.com",
+                "password": "hassapython",
+                "balance": 378.0,
+                "stripeApiId": "S?fkdh "
+            }
+        ]
+    }
+}
